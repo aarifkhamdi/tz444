@@ -1,0 +1,13 @@
+services:
+  server:
+    image: tz444/server
+    environment:
+      - ADDR=0.0.0.0:1234
+  client:
+    image: tz444/client
+    environment:
+      - ADDR=server:1234
+      - INTERACTIVE=false
+      - SEND_WRONG_CHALLENGE=true
+    depends_on:
+      - server
